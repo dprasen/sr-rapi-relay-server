@@ -1,5 +1,5 @@
 const io = require('socket.io-client');
-const socketClient = io('http://localhost');
+const socketClient = io('http://localhost:6000');
 
 socketClient.on('news', function (data) {
     console.log(data);

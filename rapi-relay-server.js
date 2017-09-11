@@ -1,10 +1,10 @@
 var app = require('http').createServer(handler)
 var io = require('socket.io')(app);
 
-app.listen(80);
+app.listen(6000);
 
 function handler (req, res) {
-	
+
 }
 
 io.on('connection', function (socket) {
