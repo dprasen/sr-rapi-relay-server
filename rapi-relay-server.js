@@ -1,19 +1,15 @@
-var http = require('http');
+var app = require('http').createServer(handler)
+var io = require('socket.io')(app);
 
-var app = http.createServer(function(req, res) {
-        console.log('createServer');
-});
-app.listen(6000);
+app.listen(80);
 
-var io = require('socket.io').listen(app);
+function handler (req, res) {
+	
+}
 
-
-io.on('connection', function(socket) {
-    io.emit('Server 2 Client Message', 'Welcome!' );
-
-    socket.on('Client 2 Server Message', function(message)      {
-        console.log(message);
-        io.emit('Server 2 Client Message', message.toUpperCase() );     //upcase it
-    });
-
+io.on('connection', function (socket) {
+  socket.emit('news', { hello: 'world' });
+  socket.on('my other event', function (data) {
+    console.log(data);
+  });
 });
